@@ -94,4 +94,6 @@ dependencies {
     kapt 'com.google.dagger:hilt-compiler:2.45'
 
 //    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation "androidx.activity:activity-ktx:1.7.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.6"
 }
