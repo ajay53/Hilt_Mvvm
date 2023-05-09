@@ -1,11 +1,13 @@
-package com.example.hiltmvvm
+package com.example.hiltmvvm.repository
 
 import android.util.Log
-import dagger.hilt.android.scopes.ActivityScoped
+import com.example.hiltmvvm.model.User
+import com.example.hiltmvvm.repository.local.UserDao
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@ActivityScoped
-class MainRepository @Inject constructor(private val databaseHandler: DatabaseHandler) {
+@Singleton
+class MainRepository @Inject constructor() {
 
     @Inject
     lateinit var userDao: UserDao

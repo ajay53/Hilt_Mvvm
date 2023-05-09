@@ -1,12 +1,13 @@
-package com.example.hiltmvvm
+package com.example.hiltmvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import com.example.hiltmvvm.viewmodel.MainViewModel
+import com.example.hiltmvvm.model.User
 import com.example.hiltmvvm.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0?.id) {
             binding.btnInsert.id -> {
-                viewModel.insertUser(User(0, "Rhino", "BigMan"))
+                viewModel.insertUser(User(0, "Giraffe", "Long_Neck"))
             }
         }
     }

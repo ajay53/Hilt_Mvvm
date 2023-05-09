@@ -1,4 +1,4 @@
-package com.example.hiltmvvm
+package com.example.hiltmvvm.repository.local
 
 import android.content.Context
 import androidx.room.Room
@@ -6,17 +6,17 @@ import com.example.hiltmvvm.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.qualifiers.ActivityContext
-import dagger.hilt.android.scopes.ActivityScoped
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-@InstallIn(ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 @Module
 class DatabaseModule {
 
     @Provides
-    @ActivityScoped
-    fun provideDatabase(@ActivityContext context: Context): DatabaseHandler {
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): DatabaseHandler {
         return Room.databaseBuilder(
             context,
             DatabaseHandler::class.java,
@@ -25,7 +25,7 @@ class DatabaseModule {
     }
 
     @Provides
-    @ActivityScoped
+    @Singleton
     fun provideUserDao(databaseHandler: DatabaseHandler): UserDao {
         return databaseHandler.userDao()
     }

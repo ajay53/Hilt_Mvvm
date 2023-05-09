@@ -1,9 +1,9 @@
-package com.example.hiltmvvm
+package com.example.hiltmvvm.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.CreationExtras
+import com.example.hiltmvvm.repository.MainRepository
+import com.example.hiltmvvm.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
