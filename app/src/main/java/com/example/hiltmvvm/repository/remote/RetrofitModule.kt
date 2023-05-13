@@ -1,6 +1,7 @@
 package com.example.hiltmvvm.repository.remote
 
 import com.example.hiltmvvm.util.Constants
+import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
-@Singleton
+@Module
 class RetrofitModule {
 
     /*@Provides
@@ -22,6 +23,7 @@ class RetrofitModule {
             .addConverterFactory(MoshiConverterFactory.create())
     }*/
 
+    @Singleton
     @Provides
     fun providesApiService(): ApiService {
         val mOkHttpClient: OkHttpClient by lazy {

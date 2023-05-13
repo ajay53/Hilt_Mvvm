@@ -3,10 +3,12 @@ package com.example.hiltmvvm.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.hiltmvvm.model.Post
+import com.example.hiltmvvm.model.PostServiceObject
 import com.example.hiltmvvm.model.User
 import com.example.hiltmvvm.repository.local.UserDao
 import com.example.hiltmvvm.repository.remote.ApiService
 import kotlinx.coroutines.*
+import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -28,14 +30,17 @@ class MainRepository @Inject constructor() {
     @Inject
     lateinit var apiService: ApiService
 
-    suspend fun getPostById(id: Long): LiveData<Post> {
+    fun getPostById(id: Long): LiveData<PostServiceObject> {
         job = Job()
-        return object : LiveData<Post>() {
+        return object : LiveData<PostServiceObject>() {
             override fun onActive() {
                 super.onActive()
                 job?.let {
                     CoroutineScope(Dispatchers.IO + it).launch {
-                        apiService.getPostById(id)
+                        val response: Response<Post> = apiService.getPostById(id)
+                        val postServiceObject = PostServiceObject(response.code(), response.message(), response.body())
+                        postValue(postServiceObject)
+                        it.complete()
                     }
                 }
             }

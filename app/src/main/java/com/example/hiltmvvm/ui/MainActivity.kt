@@ -2,6 +2,7 @@ package com.example.hiltmvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.example.hiltmvvm.viewmodel.MainViewModel
@@ -11,6 +12,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    companion object {
+        private const val TAG = "MainActivity"
+    }
 
     private lateinit var binding: ActivityMainBinding
 
@@ -24,13 +29,26 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        initViews()
+    }
+
+    private fun initViews() {
         binding.btnInsert.setOnClickListener(this)
+        binding.btnGetPost.setOnClickListener(this)
+
+        viewModel.postServiceObject.observe(this) {
+            Log.d(TAG, "initViews: $it")
+        }
     }
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
             binding.btnInsert.id -> {
                 viewModel.insertUser(User(0, "Giraffe", "Long_Neck"))
+            }
+            binding.btnGetPost.id -> {
+                viewModel.setPostIdToFetch(2)
             }
         }
     }
