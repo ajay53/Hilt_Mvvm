@@ -7,12 +7,14 @@ import com.example.hiltmvvm.model.PostServiceObject
 import com.example.hiltmvvm.model.User
 import com.example.hiltmvvm.repository.local.UserDao
 import com.example.hiltmvvm.repository.remote.ApiService
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.*
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+@ViewModelScoped
 class MainRepository @Inject constructor() {
 
     private var job: CompletableJob? = null

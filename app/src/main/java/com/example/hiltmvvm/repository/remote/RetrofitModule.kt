@@ -4,6 +4,8 @@ import com.example.hiltmvvm.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -11,7 +13,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 @Module
 class RetrofitModule {
 
@@ -23,7 +25,7 @@ class RetrofitModule {
             .addConverterFactory(MoshiConverterFactory.create())
     }*/
 
-    @Singleton
+    @ViewModelScoped
     @Provides
     fun providesApiService(): ApiService {
         val mOkHttpClient: OkHttpClient by lazy {
