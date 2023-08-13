@@ -1,9 +1,6 @@
 package com.example.hiltmvvm.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.hiltmvvm.model.User
 import com.example.hiltmvvm.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +9,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val repository: MainRepository) : ViewModel() {
+class MainViewModel @Inject constructor(
+    private val repository: MainRepository,
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
     fun insertUser(user: User) {
         viewModelScope.launch(Dispatchers.Default) {
@@ -21,9 +21,10 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
     }
 
     private val _postId: MutableLiveData<Long> = MutableLiveData()
+//    private val _postId: MutableLiveData<Long> = MutableLiveData(savedStateHandle["postId"])
 
-    val postServiceObject = _postId.switchMap {
-        repository.getPostById(it)
+    val postServiceObject = _postId.switchMap { postId ->
+        repository.getPostById(postId ?: 0)
     }
 
     fun setPostIdToFetch(postId: Long) {

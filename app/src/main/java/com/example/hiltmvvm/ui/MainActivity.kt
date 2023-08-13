@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnGetPost.setOnClickListener(this)
 
         viewModel.postServiceObject.observe(this) {
-            Log.d(TAG, "initViews: $it")
+            Log.d(TAG, "initViews: postServiceObject: $it")
         }
     }
 
