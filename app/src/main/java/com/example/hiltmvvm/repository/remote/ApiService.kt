@@ -14,4 +14,6 @@ interface ApiService {
     @GET("posts/{Id}")
 //    suspend fun getPostById(@Path("Id") id: Long): Post
     suspend fun getPostById(@Path("Id") id: Long): Response<Post>
+
+    suspend fun getImages(@Path("Id") id: Long): Response<Post>
 }

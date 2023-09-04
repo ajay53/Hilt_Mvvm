@@ -2,13 +2,17 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
     id 'kotlin-parcelize'
     id 'com.google.dagger.hilt.android'
 }
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("keys.properties")))
+
 android {
     namespace 'com.example.hiltmvvm'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.hiltmvvm"
@@ -29,10 +33,17 @@ android {
         viewBinding true
     }
     buildTypes {
+        debug {
+            buildConfigField("String", "API_KEY", "\"" + localProperties['api_key'] + "\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+        resources.excludes.add("xsd/*")
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -56,8 +67,9 @@ android {
 }
 
 dependencies {
+    def nav_version = "2.7.1"
 
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -86,15 +98,37 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
     // Room components
-    implementation "androidx.room:room-ktx:2.5.1"
-    kapt "androidx.room:room-compiler:2.5.1"
-    androidTestImplementation "androidx.room:room-testing:2.5.1"
+    implementation "androidx.room:room-ktx:2.5.2"
+//    kapt "androidx.room:room-compiler:2.5.2"
+    ksp "androidx.room:room-compiler:2.5.2"
+    androidTestImplementation "androidx.room:room-testing:2.5.2"
 
     //Hilt-Dagger
     implementation 'com.google.dagger:hilt-android:2.45'
     kapt 'com.google.dagger:hilt-compiler:2.45'
 
+    //no need for higher-level of kotlin plugins
 //    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation "androidx.activity:activity-ktx:1.7.1"
-    implementation "androidx.fragment:fragment-ktx:1.5.7"
+
+    //for view model by viewmodels
+    implementation "androidx.fragment:fragment-ktx:1.6.1"
+    implementation "androidx.activity:activity-ktx:1.7.2"
+
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    //safe args
+    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version") {
+        exclude group: "com.sun.activation", module: "javax.activation"
+        exclude group: "xpp3", module: "xpp3"
+        exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib"
+        // kotlin-gradle-plugin , kotlin-stdlib
+        exclude group: "org.jetbrains.kotlin", module: "kotlin-gradle-plugin"
+        // kotlin-gradle-plugin , kotlin-stdlib
+        exclude group: "org.jetbrains.kotlin", module: "kotlin-android-extensions-runtime"
+        exclude group: "xmlpull", module: "xmlpull"
+    }
 }
