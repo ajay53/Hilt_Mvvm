@@ -13,7 +13,7 @@ import com.example.hiltmvvm.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : BaseActivity(), View.OnClickListener {
 
     companion object {
         private const val TAG = "MainActivity"

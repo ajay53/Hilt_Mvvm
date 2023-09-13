@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.hiltmvvm.databinding.FragmentHomeBinding
 
-class HomeFragment:Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -26,5 +26,13 @@ class HomeFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+    }
+
+    override fun onClick(p0: View?) {
+        when (p0?.id) {
+            binding.tvSearch.id -> {
+
+            }
+        }
     }
 }
