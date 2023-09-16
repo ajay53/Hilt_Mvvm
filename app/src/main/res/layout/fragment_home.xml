@@ -11,18 +11,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="10dp"
         android:gravity="center_vertical|start"
-        android:text="Home"
+        android:text="Search term - Optional"
         android:textAlignment="gravity"
         android:textSize="20dp"
-        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_location_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_location_radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:text="Location/Radius: Current - 500m"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sort_by"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_search" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_sort_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:text="Sort by: Nearest"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location_radius" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sort_by" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_business"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator"
+        tools:listitem="@layout/layout_restaurant_list_item" />
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_separator_or"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="15dp"
@@ -63,11 +100,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_separator_text"
             app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_filter_category"
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_separator_or"
         android:orientation="horizontal"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

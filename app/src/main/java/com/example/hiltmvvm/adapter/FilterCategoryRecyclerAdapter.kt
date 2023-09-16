@@ -2,12 +2,11 @@ package com.example.hiltmvvm.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.example.hiltmvvm.databinding.FilterCategoryListItemBinding
 import com.example.hiltmvvm.model.FilterCategoryObject
 
-class FilterCategoryRecyclerAdapter(private val interaction: Interaction) :
+class FilterCategoryRecyclerAdapter(private val filterCategoryInteraction: FilterCategoryInteraction) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var list: List<FilterCategoryObject> = mutableListOf()
@@ -60,21 +59,19 @@ class FilterCategoryRecyclerAdapter(private val interaction: Interaction) :
         }
 
         fun bind(item: FilterCategoryObject) {
-//            binding.setVariable(BR.item, item)
-//            binding.executePendingBindings()
 
             binding.tvName.setOnClickListener{
-                interaction.onItemSelected(adapterPosition, item)
+                filterCategoryInteraction.onFilterClicked(adapterPosition, item)
             }
 
             itemView.setOnClickListener {
-                interaction.onItemSelected(adapterPosition, item)
+                filterCategoryInteraction.onFilterClicked(adapterPosition, item)
             }
 
         }
     }
 
-    fun interface Interaction {
-        fun onItemSelected(position: Int, item: FilterCategoryObject)
+    fun interface FilterCategoryInteraction {
+        fun onFilterClicked(position: Int, item: FilterCategoryObject)
     }
 }
