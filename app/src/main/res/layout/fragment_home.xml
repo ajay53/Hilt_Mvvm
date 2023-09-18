@@ -41,6 +41,7 @@
         android:layout_marginHorizontal="15dp"
         android:text="Sort by: Nearest"
         app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/separator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_location_radius" />
 
@@ -50,15 +51,30 @@
         android:layout_height="1dp"
         android:layout_marginHorizontal="15dp"
         android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/tv_restaurants"
         app:layout_constraintTop_toBottomOf="@+id/tv_sort_by" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_restaurants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="10dp"
+        android:gravity="center"
+        android:text="Restaurants"
+        app:layout_constraintBottom_toTopOf="@+id/rv_business"
+        app:layout_constraintTop_toBottomOf="@+id/separator" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_business"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/separator"
-        tools:listitem="@layout/layout_restaurant_list_item" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_restaurants"
+        tools:listitem="@layout/list_item_restaurant" />
     <!--<androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_separator_or"
         android:layout_width="match_parent"
