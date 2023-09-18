@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.hiltmvvm.ui.HomeFragment"
-        android:label="fragment_home"
+        android:label="Hoome"
         tools:layout="@layout/fragment_home" />
 </navigation>

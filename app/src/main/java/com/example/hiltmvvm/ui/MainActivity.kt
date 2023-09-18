@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.hiltmvvm.R
 import com.example.hiltmvvm.viewmodel.MainViewModel
 import com.example.hiltmvvm.model.User
@@ -20,6 +24,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController:NavController
+    private lateinit var appBarConfiguration : AppBarConfiguration
 
     //    @Inject
 //    https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-factories#kotlin_1
@@ -32,7 +38,17 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        setSupportActionBar(binding.toolbar)
+        setupActionBarWithNavController(navController)
 //        initViews()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     /*private fun initViews() {

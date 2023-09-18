@@ -74,10 +74,10 @@ class HomeFragment : Fragment(), View.OnClickListener,
             }
 
             binding.tvRestaurants.id -> {
-                PermissionRequestDialog("", "", "", "", 123, requireActivity()).show(
+                /*PermissionRequestDialog("", "", "", "", 123, requireActivity()).show(
                     childFragmentManager,
                     null
-                )
+                )*/
             }
         }
     }

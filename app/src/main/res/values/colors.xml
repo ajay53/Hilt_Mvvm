@@ -11,6 +11,8 @@
     <color name="category_border_unselected">#d9d9d9</color>
     <color name="category_border_selected">#cceeff</color>
 
+    <color name="background">#F8F8F8</color>
+
     <color name="rating_great">#ff669900</color>
     <color name="rating_good">#d0cf4e</color>
     <color name="rating_average">#ffff8800</color>

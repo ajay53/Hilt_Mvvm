@@ -46,4 +46,26 @@ class RetrofitModule {
             .build()
             .create(ApiService::class.java)
     }
+
+    @ViewModelScoped
+    @Provides
+    fun providesYelpApiService(): YelpApiService {
+        val mOkHttpClient: OkHttpClient by lazy {
+            OkHttpClient.Builder()
+                .readTimeout(3, TimeUnit.SECONDS)
+                .connectTimeout(3, TimeUnit.SECONDS)
+                .build()
+        }
+
+        val retrofitBuilder: Retrofit.Builder by lazy {
+            Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .client(mOkHttpClient)
+                .addConverterFactory(MoshiConverterFactory.create())
+        }
+
+        return retrofitBuilder
+            .build()
+            .create(YelpApiService::class.java)
+    }
 }
