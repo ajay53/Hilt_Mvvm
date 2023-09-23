@@ -10,9 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.hiltmvvm.adapter.FilterCategoryRecyclerAdapter
+import com.example.hiltmvvm.adapter.FilterCategoryInteraction
+import com.example.hiltmvvm.customview.LocationSortByBottomSheet
 import com.example.hiltmvvm.customview.PermissionRequestDialog
+import com.example.hiltmvvm.customview.PermissionRequestDialogClickListener
 import com.example.hiltmvvm.databinding.FragmentHomeBinding
 import com.example.hiltmvvm.model.FilterCategoryObject
 import com.example.hiltmvvm.util.Constants
@@ -22,9 +23,10 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
+import dagger.hilt.android.AndroidEntryPoint
 
 class HomeFragment : Fragment(), View.OnClickListener,
-    FilterCategoryRecyclerAdapter.FilterCategoryInteraction {
+    FilterCategoryInteraction, PermissionRequestDialogClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -44,7 +46,6 @@ class HomeFragment : Fragment(), View.OnClickListener,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-
         return binding.root
     }
 
@@ -55,6 +56,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
     }
 
     private fun initViews() {
+        binding.tvSearch.setOnClickListener(this)
         binding.tvRestaurants.setOnClickListener(this)
 
         /*binding.rvFilterCategory.apply {
@@ -70,14 +72,33 @@ class HomeFragment : Fragment(), View.OnClickListener,
     override fun onClick(p0: View?) {
         when (p0?.id) {
             binding.tvSearch.id -> {
-                TODO("Not yet implemented")
+                LocationSortByBottomSheet().show(childFragmentManager, null)
             }
 
             binding.tvRestaurants.id -> {
-                /*PermissionRequestDialog("", "", "", "", 123, requireActivity()).show(
+                PermissionRequestDialog(
+                    "",
+                    "",
+                    "",
+                    "",
+                    123,
+                    object : PermissionRequestDialogClickListener {
+                        override fun onCrossClicked() {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onPositiveClicked() {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onNegativeClicked() {
+                            TODO("Not yet implemented")
+                        }
+
+                    }).show(
                     childFragmentManager,
                     null
-                )*/
+                )
             }
         }
     }
@@ -148,5 +169,17 @@ class HomeFragment : Fragment(), View.OnClickListener,
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCrossClicked() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPositiveClicked() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNegativeClicked() {
+        TODO("Not yet implemented")
     }
 }

@@ -20,4 +20,7 @@
 
     <color name="status_open">#ff669900</color>
     <color name="status_closed">#ffcc0000</color>
+
+    <color name="text">#FF000000</color>
+    <color name="separator">#FFE6E6E6</color>
 </resources>

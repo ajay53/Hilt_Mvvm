@@ -17,14 +17,6 @@ import javax.inject.Singleton
 @Module
 class RetrofitModule {
 
-    /*@Provides
-    fun providesRetrofitBuilder(): Retrofit.Builder {
-        return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
-            .client(mOkHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
-    }*/
-
     @ViewModelScoped
     @Provides
     fun providesApiService(): ApiService {

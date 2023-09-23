@@ -45,7 +45,7 @@
                     app:imageAdapter="@{item.imageURL}" />
             </androidx.cardview.widget.CardView>
 
-            <com.example.hiltmvvm.customview.RursusMonoTextView
+            <com.example.hiltmvvm.customview.RursusMonoBoldTextView
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                 app:layout_constraintStart_toEndOf="@+id/cvIcon"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.example.hiltmvvm.customview.RursusMonoTextView
+            <com.example.hiltmvvm.customview.RursusMonoBoldTextView
                 android:id="@+id/tvAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 app:layout_constraintStart_toEndOf="@+id/cvIcon"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-            <com.example.hiltmvvm.customview.RursusMonoTextView
+            <com.example.hiltmvvm.customview.RursusMonoBoldTextView
                 android:id="@+id/tvStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.example.hiltmvvm.customview.RursusMonoTextView
+                <com.example.hiltmvvm.customview.RursusMonoBoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/holo_orange_dark"

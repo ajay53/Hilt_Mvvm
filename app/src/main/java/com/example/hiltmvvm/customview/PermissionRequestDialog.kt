@@ -4,18 +4,33 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentActivity
+import com.example.hiltmvvm.R
 import com.example.hiltmvvm.databinding.DialogPermissionRequestBinding
 
-class PermissionRequestDialog(
-    private val activity: FragmentActivity,
-    private val title: String,
-    private val desc: String,
-    private val positiveText: String,
-    private val negativeText: String,
-    private val iconId: Int,
-    private val listener: PermissionRequestDialogClickListener
-) : DialogFragment() {
+class PermissionRequestDialog() : DialogFragment() {
+
+    constructor(
+        title: String,
+        desc: String,
+        positiveText: String,
+        negativeText: String,
+        iconId: Int,
+        listener: PermissionRequestDialogClickListener
+    ) : this() {
+        this.title = title
+        this.desc = desc
+        this.positiveText = positiveText
+        this.negativeText = negativeText
+        this.iconId = iconId
+        this.listener = listener
+    }
+
+    private lateinit var title: String
+    private lateinit var desc: String
+    private lateinit var positiveText: String
+    private lateinit var negativeText: String
+    private var iconId: Int = R.drawable.ic_restaurant
+    private lateinit var listener: PermissionRequestDialogClickListener
 
     private var _binding: DialogPermissionRequestBinding? = null
 
@@ -30,8 +45,9 @@ class PermissionRequestDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding =
             DialogPermissionRequestBinding.inflate(layoutInflater)
-        val dialog = AlertDialog.Builder(activity, com.example.hiltmvvm.R.style.CustomAlertDialog)
-            .create()
+        val dialog =
+            AlertDialog.Builder(requireActivity(), com.example.hiltmvvm.R.style.CustomAlertDialog)
+                .create()
         dialog.setView(binding.root)
         dialog.setCanceledOnTouchOutside(false)
 

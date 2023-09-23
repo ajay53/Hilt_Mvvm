@@ -84,7 +84,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-// Lifecycle components
+    // Lifecycle components
     //DO NOT UPGRADE - version 2.6.0 gives dependency resolution errors
     //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"

@@ -60,7 +60,7 @@ class FilterCategoryRecyclerAdapter(private val filterCategoryInteraction: Filte
 
         fun bind(item: FilterCategoryObject) {
 
-            binding.tvName.setOnClickListener{
+            binding.tvName.setOnClickListener {
                 filterCategoryInteraction.onFilterClicked(adapterPosition, item)
             }
 
@@ -70,8 +70,8 @@ class FilterCategoryRecyclerAdapter(private val filterCategoryInteraction: Filte
 
         }
     }
+}
 
-    fun interface FilterCategoryInteraction {
-        fun onFilterClicked(position: Int, item: FilterCategoryObject)
-    }
+fun interface FilterCategoryInteraction {
+    fun onFilterClicked(position: Int, item: FilterCategoryObject)
 }

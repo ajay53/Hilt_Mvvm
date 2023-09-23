@@ -7,7 +7,7 @@
     android:background="@color/background"
     tools:context=".ui.HomeFragment">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.example.hiltmvvm.customview.RursusMonoBoldTextView
         android:id="@+id/tv_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,6 +18,7 @@
         android:gravity="center_vertical|start"
         android:text="Search term - Optional"
         android:textAlignment="gravity"
+        android:textColor="@color/background"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_location_radius"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="5dp"
+        android:padding="5dp"
         android:text="Location/Radius: Current - 500m"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/tv_sort_by"
@@ -40,6 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="5dp"
+        android:padding="5dp"
         android:text="Sort by: Nearest"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/separator"
@@ -51,11 +56,11 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginHorizontal="15dp"
-        android:background="@color/black"
+        android:background="@color/separator"
         app:layout_constraintBottom_toTopOf="@+id/tv_restaurants"
         app:layout_constraintTop_toBottomOf="@+id/tv_sort_by" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.example.hiltmvvm.customview.RursusMonoBoldTextView
         android:id="@+id/tv_restaurants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,8 +75,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_restaurants"
