@@ -44,14 +44,14 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController)
-//        initViews()
+        initViews()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    /*private fun initViews() {
+    private fun initViews() {
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
 
@@ -61,16 +61,16 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         viewModel.postServiceObject.observe(this) {
             Log.d(TAG, "initViews: postServiceObject: $it")
         }
-    }*/
+    }
 
     override fun onClick(p0: View?) {
-        /*when (p0?.id) {
+        when (p0?.id) {
             binding.btnInsert.id -> {
                 viewModel.insertUser(User(0, "Giraffe", "Long_Neck"))
             }
             binding.btnGetPost.id -> {
                 viewModel.setPostIdToFetch(2)
             }
-        }*/
+        }
     }
 }

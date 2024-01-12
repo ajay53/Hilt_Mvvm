@@ -32,6 +32,7 @@
         android:layout_marginHorizontal="15dp"
         android:layout_marginVertical="5dp"
         android:padding="5dp"
+
         android:text="Location/Radius: Current - 500m"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/tv_sort_by"
