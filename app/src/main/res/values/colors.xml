@@ -16,11 +16,12 @@
     <color name="rating_great">#ff669900</color>
     <color name="rating_good">#d0cf4e</color>
     <color name="rating_average">#ffff8800</color>
-    <color name="rating_bad">#ffcc0000</color>
+    <color name="rating_bad">#ff991f00</color>
 
     <color name="status_open">#ff669900</color>
-    <color name="status_closed">#ffcc0000</color>
+    <color name="status_closed">#ff991f00</color>
 
     <color name="text">#FF000000</color>
     <color name="separator">#FFE6E6E6</color>
+    <color name="border">#AAAAAA</color>
 </resources>

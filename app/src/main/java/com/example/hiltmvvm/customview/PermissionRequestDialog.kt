@@ -46,7 +46,7 @@ class PermissionRequestDialog() : DialogFragment() {
         _binding =
             DialogPermissionRequestBinding.inflate(layoutInflater)
         val dialog =
-            AlertDialog.Builder(requireActivity(), com.example.hiltmvvm.R.style.CustomAlertDialog)
+            AlertDialog.Builder(requireActivity(), R.style.CustomAlertDialog)
                 .create()
         dialog.setView(binding.root)
         dialog.setCanceledOnTouchOutside(false)

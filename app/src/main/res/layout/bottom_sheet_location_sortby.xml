@@ -1,11 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp">
+-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bottom_sheet_location_sort_by"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
     tools:context=".customview.LocationSortByBottomSheet">
 
     <com.example.hiltmvvm.customview.RursusMonoBoldTextView
@@ -87,6 +93,7 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/separator"
         app:layout_constraintEnd_toStartOf="@+id/tv_max_radius"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,34 +113,125 @@
         app:layout_constraintStart_toEndOf="@+id/tv_min_radius"
         app:layout_constraintTop_toBottomOf="@+id/sb_radius_selector" />
 
-    <com.example.hiltmvvm.customview.RursusMonoBoldTextView
-        android:id="@+id/tv_1"
+    <View
+        android:id="@+id/separator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="5dp"
-        android:gravity="start"
-        android:text="Sort By:"
-        app:layout_constraintBottom_toTopOf="@+id/tv_2"
+        android:layout_marginVertical="10dp"
+        android:background="@color/separator"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sort_by"
         app:layout_constraintTop_toBottomOf="@+id/tv_min_radius" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_2"
+        android:id="@+id/tv_sort_by"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
-        android:gravity="center"
-        android:text="text 2"
-        app:layout_constraintBottom_toTopOf="@+id/tv_3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_1" />
+        android:layout_marginHorizontal="10dp"
+        android:fontFamily="@font/rursus_compact_mono"
+        android:gravity="start"
+        android:text="Sort By: None Active"
+        android:textColor="@color/text"
+        app:layout_constraintBottom_toTopOf="@+id/radio_group"
+        app:layout_constraintTop_toBottomOf="@+id/separator" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_3"
+    <RadioGroup
+        android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
-        android:gravity="center"
-        android:text="text 3"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_apply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sort_by">
+
+        <RadioButton
+            android:id="@+id/rb_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/rating_bad"
+            android:checked="false"
+            android:fontFamily="@font/rursus_compact_mono"
+            android:text="Distance"
+            android:textColor="@color/text" />
+
+        <RadioButton
+            android:id="@+id/rb_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/rating_bad"
+            android:checked="false"
+            android:fontFamily="@font/rursus_compact_mono"
+            android:text="Rating"
+            android:textColor="@color/text" />
+
+        <RadioButton
+            android:id="@+id/rb_review_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/rating_bad"
+            android:checked="false"
+            android:fontFamily="@font/rursus_compact_mono"
+            android:text="Review Count"
+            android:textColor="@color/text" />
+
+        <RadioButton
+            android:id="@+id/rb_best_match"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/rating_bad"
+            android:checked="false"
+            android:fontFamily="@font/rursus_compact_mono"
+            android:text="Best Match"
+            android:textColor="@color/text" />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="20dp"
+        android:autoSizeTextType="uniform"
+        android:background="@color/rating_bad"
+        android:fontFamily="@font/rursus_compact_mono"
+        android:maxHeight="80dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Close"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:autoSizeMaxTextSize="20sp"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeStepGranularity="2sp"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_2" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintEnd_toStartOf="@+id/btn_apply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:autoSizeTextType="uniform"
+        android:background="@color/rating_great"
+        android:fontFamily="@font/rursus_compact_mono"
+        android:maxHeight="80dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Apply"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:autoSizeMaxTextSize="20sp"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeStepGranularity="2sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_close"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+</androidx.constraintlayout.widget.ConstraintLayout><!--</androidx.cardview.widget.CardView>-->
