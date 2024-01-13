@@ -8,9 +8,19 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.hiltmvvm.R
 
-class RursusMonoRegularTextView : AppCompatTextView {
+class RursusMonoRegularTextView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : AppCompatTextView(context, attrs, defStyleAttr) {
 
-    constructor(context: Context) : super(context) {
+    init {
+        val typeFace = ResourcesCompat.getFont(context, R.font.rursus_compact_mono)
+        this.setTypeface(typeFace, Typeface.NORMAL)
+
+        this.setTextColor(ContextCompat.getColor(context, R.color.text))
+    }
+    /*constructor(context: Context) : super(context) {
         val typeFace = ResourcesCompat.getFont(context, R.font.rursus_compact_mono)
         this.setTypeface(typeFace, Typeface.NORMAL)
 
@@ -31,5 +41,5 @@ class RursusMonoRegularTextView : AppCompatTextView {
         this.setTypeface(typeFace, Typeface.NORMAL)
 
         this.setTextColor(ContextCompat.getColor(context, R.color.text))
-    }
+    }*/
 }
