@@ -1,10 +1,12 @@
 package com.example.hiltmvvm.customview
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import com.example.hiltmvvm.R
 import com.example.hiltmvvm.databinding.BottomSheetLocationSortbyBinding
 import com.example.hiltmvvm.util.Enum
@@ -36,7 +38,9 @@ class LocationSortByBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnApply.setOnClickListener{
+        initViews()
+
+        binding.btnApply.setOnClickListener {
 
         }
 
@@ -65,5 +69,26 @@ class LocationSortByBottomSheet : BottomSheetDialogFragment() {
         binding.btnClose.setOnClickListener {
             dismiss()
         }
+    }
+
+    private fun initViews() {
+        binding.sbRadiusSelector.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(
+                seekBar: SeekBar,
+                progressValue: Int,
+                fromUser: Boolean
+            ) {
+//                binding.tvRadius.text = "$progressValue mi"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Do something
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Do something
+            }
+        })
     }
 }

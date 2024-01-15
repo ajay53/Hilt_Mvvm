@@ -205,6 +205,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/separator_2">
 
@@ -256,54 +257,4 @@
             app:layout_constraintStart_toEndOf="@+id/btn_close"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--<androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_close"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="20dp"
-        android:autoSizeTextType="uniform"
-        android:background="@color/rating_bad"
-        android:fontFamily="@font/rursus_compact_mono"
-        android:maxHeight="80dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:text="Close"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:autoSizeMaxTextSize="20sp"
-        app:autoSizeMinTextSize="12sp"
-        app:autoSizeStepGranularity="2sp"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_apply"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_apply"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="20dp"
-        android:autoSizeTextType="uniform"
-        android:background="@color/rating_great"
-        android:fontFamily="@font/rursus_compact_mono"
-        android:maxHeight="80dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:text="Apply"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:autoSizeMaxTextSize="20sp"
-        app:autoSizeMinTextSize="12sp"
-        app:autoSizeStepGranularity="2sp"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_close"
-        app:layout_constraintTop_toBottomOf="@+id/radio_group" />-->
 </androidx.constraintlayout.widget.ConstraintLayout><!--</androidx.cardview.widget.CardView>-->

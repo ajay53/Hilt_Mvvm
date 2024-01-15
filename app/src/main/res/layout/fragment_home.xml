@@ -20,26 +20,26 @@
         android:textAlignment="gravity"
         android:textColor="@color/background"
         android:textSize="20dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/tv_location_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.example.hiltmvvm.customview.RursusMonoRegularTextView
         android:id="@+id/tv_location_radius"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginVertical="5dp"
         android:padding="5dp"
-
         android:text="Location/Radius: Current - 500m"
+        android:textSize="@dimen/body_medium"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/tv_sort_by"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_search" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.example.hiltmvvm.customview.RursusMonoRegularTextView
         android:id="@+id/tv_sort_by"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +47,7 @@
         android:layout_marginVertical="5dp"
         android:padding="5dp"
         android:text="Sort by: Nearest"
+        android:textSize="@dimen/body_medium"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@+id/separator"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,4 +133,18 @@
         app:layout_constraintTop_toBottomOf="@+id/cl_separator_or"
         android:orientation="horizontal"
         android:layout_height="wrap_content"/>-->
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_set_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/rursus_compact_mono"
+        android:text="Set Selection"
+        android:textSize="@dimen/title_medium"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_restaurant"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
