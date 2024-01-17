@@ -7,18 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.fragment.app.viewModels
 import com.example.hiltmvvm.R
 import com.example.hiltmvvm.databinding.BottomSheetLocationSortbyBinding
 import com.example.hiltmvvm.util.Enum
+import com.example.hiltmvvm.viewmodel.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class LocationSortByBottomSheet : BottomSheetDialogFragment() {
+class LocationSortByBottomSheet(private val listener: OnLocationBottomSheetListener) :
+    BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetLocationSortbyBinding? = null
     private val binding get() = _binding!!
 
     private var selectedSort: String? = null
     private var appliedSort: String? = null
+    private var seekBarProgress: Int = 0
+    private var isLocationSwitchEnabled: Boolean = false
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         setStyle(STYLE_NORMAL, R.style.MyBottomSheet)
@@ -41,7 +46,7 @@ class LocationSortByBottomSheet : BottomSheetDialogFragment() {
         initViews()
 
         binding.btnApply.setOnClickListener {
-
+            listener.onLocationBottomSheetApplied(seekBarProgress, isLocationSwitchEnabled)
         }
 
         binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
@@ -67,6 +72,7 @@ class LocationSortByBottomSheet : BottomSheetDialogFragment() {
 
 
         binding.btnClose.setOnClickListener {
+//            listener.onLocationBottomSheetCancelled()
             dismiss()
         }
     }
@@ -80,6 +86,7 @@ class LocationSortByBottomSheet : BottomSheetDialogFragment() {
                 fromUser: Boolean
             ) {
 //                binding.tvRadius.text = "$progressValue mi"
+                seekBarProgress = progressValue
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -90,5 +97,13 @@ class LocationSortByBottomSheet : BottomSheetDialogFragment() {
                 // Do something
             }
         })
+
+        binding.swLocation.setOnCheckedChangeListener { _, isChecked ->
+            isLocationSwitchEnabled = isChecked
+        }
+    }
+
+    fun interface OnLocationBottomSheetListener {
+        fun onLocationBottomSheetApplied(seekBarProgress:Int, isLocationSwitchEnabled:Boolean)
     }
 }

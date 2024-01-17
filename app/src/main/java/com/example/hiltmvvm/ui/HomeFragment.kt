@@ -37,7 +37,8 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 
 class HomeFragment : Fragment(), View.OnClickListener,
-    FilterCategoryInteraction, PermissionRequestDialogClickListener {
+    FilterCategoryInteraction, PermissionRequestDialogClickListener,
+    LocationSortByBottomSheet.OnLocationBottomSheetListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -155,7 +156,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
     override fun onClick(p0: View?) {
         when (p0?.id) {
             binding.tvSearch.id -> {
-                LocationSortByBottomSheet().show(childFragmentManager, null)
+//                LocationSortByBottomSheet(this).show(childFragmentManager, null)
             }
 
             binding.tvRestaurants.id -> {
@@ -184,7 +185,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
                 )
             }
 
-            binding.fabSetSelection.id -> LocationSortByBottomSheet().show(
+            binding.fabSetSelection.id -> LocationSortByBottomSheet(listener = this).show(
                 childFragmentManager,
                 null
             )
@@ -211,7 +212,7 @@ class HomeFragment : Fragment(), View.OnClickListener,
         ))
     }
 
-    private fun showLocationPermissionDialog(permission: com.example.hiltmvvm.util.Enum.Permission) {
+    private fun showLocationPermissionDialog(permission: Enum.Permission) {
         val alertBinding: DialogLocationRequestBinding =
             DialogLocationRequestBinding.inflate(layoutInflater)
         val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
@@ -362,6 +363,13 @@ class HomeFragment : Fragment(), View.OnClickListener,
     }
 
     override fun onNegativeClicked() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLocationBottomSheetApplied(
+        seekBarProgress: Int,
+        isLocationSwitchEnabled: Boolean
+    ) {
         TODO("Not yet implemented")
     }
 }
