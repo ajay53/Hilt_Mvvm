@@ -7,7 +7,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.hiltmvvm.R
 import com.example.hiltmvvm.databinding.DialogPermissionRequestBinding
 
-class PermissionRequestDialog() : DialogFragment() {
+class PermissionRequestDialog() : DialogFragment(R.layout.dialog_permission_request) {
 
     constructor(
         title: String,
@@ -54,12 +54,15 @@ class PermissionRequestDialog() : DialogFragment() {
 //        binding.tvTitle.text = title
         binding.ivCross.setOnClickListener {
             listener.onCrossClicked()
+            dismiss()
         }
         binding.tvConfirm.setOnClickListener {
             listener.onPositiveClicked()
+            dismiss()
         }
         binding.tvCancel.setOnClickListener {
             listener.onNegativeClicked()
+            dismiss()
         }
 
         return dialog

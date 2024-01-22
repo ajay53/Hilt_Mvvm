@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import com.example.hiltmvvm.repository.HomeRepository
-import com.goazzi.skycore.model.SearchBusiness
+import com.example.hiltmvvm.model.SearchBusiness
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -16,6 +16,10 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val businessServiceClass = _searchBusiness.switchMap {
         repository.searchBusinesses(it.lat, it.lon, it.radius, it.sortBy, it.limit, it.offset)
     }
+
+
+
+
 
     fun cancelJobs() {
         //cancel pending operations if need be

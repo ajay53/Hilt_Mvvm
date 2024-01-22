@@ -1,4 +1,4 @@
-package com.goazzi.skycore.model
+package com.example.hiltmvvm.model
 
 data class SearchBusiness(
     val lat: Double,
