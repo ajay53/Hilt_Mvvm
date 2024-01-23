@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hiltmvvm.R
+import com.example.hiltmvvm.adapter.BusinessRecyclerAdapter
 import com.example.hiltmvvm.adapter.FilterCategoryInteraction
 import com.example.hiltmvvm.customview.LocationSortByBottomSheet
 import com.example.hiltmvvm.customview.OnLocationBottomSheetAction
@@ -48,6 +50,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener,
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var recyclerAdapter: BusinessRecyclerAdapter
     private var radius: Int = 100
     private var resetData: Boolean = false
     private val locHandler = HandlerThread("location")
@@ -90,6 +93,22 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener,
         binding.tvSearch.setOnClickListener(this)
         binding.tvRestaurants.setOnClickListener(this)
 
+        viewModel.businessServiceClass.observe(viewLifecycleOwner){business->
+            binding.progressBar.hide()
+
+            //handling response code
+            if (business == null || business.code != 200) {
+                if (business != null && business.message.isNotBlank()) {
+                    Toast.makeText(requireContext(), business.message, Toast.LENGTH_SHORT)
+                        .show()
+                }
+//                binding.ivNoRestaurant.visibility = View.VISIBLE
+//                binding.tvNoRestaurant.visibility = View.VISIBLE
+            } else {
+                updateUI(business)
+            }
+        }
+
         binding.rvBusiness.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -111,6 +130,12 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener,
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }*/
     }
+
+    private fun updateUI(businessServiceClass: BusinessesServiceClass) {
+
+
+    }
+
 
     override fun onClick(p0: View?) {
         when (p0?.id) {

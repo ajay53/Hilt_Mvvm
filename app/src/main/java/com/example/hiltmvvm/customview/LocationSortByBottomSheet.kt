@@ -68,10 +68,12 @@ class LocationSortByBottomSheet(private val listener: OnLocationBottomSheetActio
             } else {
                 "Location: Current"
             }
-            if (this::businesses.isInitialized) {
+            /*if (this::businesses.isInitialized) {
 //                businesses.clear()
                 businesses = mutableListOf()
-            }
+            }*/
+
+            viewModel.businesses.clear()
 
             if (this::recyclerAdapterNew.isInitialized) {
                 recyclerAdapterNew.submitList(businesses, binding.rvRestaurants)
@@ -81,14 +83,14 @@ class LocationSortByBottomSheet(private val listener: OnLocationBottomSheetActio
             /*if (this::recyclerAdapter.isInitialized) {
                 recyclerAdapter.notifyDataSetChanged()
             }*/
-            resetData = true
-            isLoading = false
-            isLastPage = false
+//            resetData = true
+//            isLoading = false
+//            isLastPage = false
             binding.sbRadiusSelector.progress = 0
 //            binding.ivNoRestaurant.visibility = View.VISIBLE
 //            binding.tvNoRestaurant.visibility = View.VISIBLE
             viewModel.cancelJobs()
-            binding.progressBar.hide()
+//            binding.progressBar.hide()
         }
 
         binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->

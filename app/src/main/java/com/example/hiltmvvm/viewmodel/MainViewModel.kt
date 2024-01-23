@@ -2,6 +2,7 @@ package com.example.hiltmvvm.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.*
+import com.example.hiltmvvm.model.Business
 import com.example.hiltmvvm.model.User
 import com.example.hiltmvvm.repository.MainRepository
 import com.example.hiltmvvm.util.Util
@@ -19,9 +20,10 @@ class MainViewModel @Inject constructor(
 
     var radius: Int = 0
     var radiusPosition: Int = 0
-    var lat:Double = 0.0
-    var lon:Double = 0.0
-    var activeSort:String = ""
+    var lat: Double = 0.0
+    var lon: Double = 0.0
+    var activeSort: String = ""
+    val businesses: MutableList<Business> = mutableListOf()
 
     fun insertUser(user: User) {
         viewModelScope.launch(Dispatchers.Default) {
